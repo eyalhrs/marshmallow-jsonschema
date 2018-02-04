@@ -157,17 +157,32 @@ class JSONSchema(Schema):
         mapping = self._get_default_mapping(obj)
         if field.__class__.__name__ == 'Point':
             schema = {
-                    "type": {"enum": ["Point"]},
+                "title": "Point",
+                "required": [
+                    "type",
+                    "coordinates"
+                ],
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "Point"
+                        ]
+                    },
                     "coordinates": {
                         "description": "A single position",
                         "type": "array",
                         "minItems": 2,
                         "items": [
-                            {"type": "number"},
-                            {"type": "number"}
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "number"
+                            }
                         ],
                         "additionalItems": "false"
                     }
+                }
             }
         elif hasattr(field, '_jsonschema_type_mapping'):
             schema = field._jsonschema_type_mapping()
