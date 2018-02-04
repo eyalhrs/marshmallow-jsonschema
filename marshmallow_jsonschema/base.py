@@ -157,7 +157,6 @@ class JSONSchema(Schema):
         mapping = self._get_default_mapping(obj)
         if field.__class__.__name__ == 'Point':
             schema = {
-                "title": "Point",
                 "properties": {
                     "type": {"enum": ["Point"]},
                     "coordinates": {
