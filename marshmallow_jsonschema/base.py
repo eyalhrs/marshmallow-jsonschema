@@ -109,8 +109,9 @@ class JSONSchema(Schema):
         properties = {}
 
         for field_name, field in sorted(obj.fields.items()):
-            schema = self._get_schema_for_field(obj, field)
-            properties[field.name] = schema
+            if field_name != 'auto_id_0':
+                schema = self._get_schema_for_field(obj, field)
+                properties[field.name] = schema
 
         return properties
 
