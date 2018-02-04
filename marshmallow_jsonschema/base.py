@@ -180,7 +180,7 @@ class JSONSchema(Schema):
                                 "type": "number"
                             }
                         ],
-                        "additionalItems": "false"
+                        "additionalItems": false
                     }
                 }
             }
